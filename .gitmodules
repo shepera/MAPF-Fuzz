@@ -1,0 +1,6 @@
+[submodule "third_party/pibt2"]
+	path = third_party/pibt2
+	url = git@github.com:Kei18/pibt2.git
+[submodule "third_party/lacam3"]
+	path = third_party/lacam3
+	url = git@github.com:Kei18/lacam3.git
