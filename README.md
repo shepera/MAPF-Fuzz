@@ -62,21 +62,27 @@ This repository implements **MAPF-Fuzz**, the metamorphic fuzzing framework desc
 ## Module Overview
 
 * mutation/
+  
 Implements map-level (mutate_map_fn.py) and agent-level (mutate_agent_fn.py, mutate_agent_no_guidance.py) mutation functions. The mutate.py script orchestrates mutation operations.
 
 * analysis/
+
 Extracts compact feature vectors, maintains an ANN index for novelty scoring, and computes energy values to guide seed selection.
 
 * execution/
+  
 Wraps MAPF solver invocation, handles feasibility checks, logs results, and parses outcomes.
 
 * maptype.py
+  
 Provides datatypes needed for MAPF-Fuzz.
 
 * util.py
+  
 Shared utilities (e.g., path validation, distance metrics, argument parsing).
 
 * main.py / main_parallel.py
+  
 Command-line interfaces for running MAPF-Fuzz in single or multi-process mode. Accepts solver choice, test duration, map size, agent count, etc.
 
 ## Configuration
@@ -99,7 +105,7 @@ NUM_AGENT=100
 
 ## Visualizer for Defects
 
-The visualizer in the PIBT repository can be used to interactively inspect defects discovered by MAPF-Fuzz. Build the visualizer first (see the instructions in the [PIBT repo](https://github.com/Kei18/pibt2)).
+The visualizer in the PIBT repository can be used to interactively inspect defects discovered by MAPF-Fuzz. Build the visualizer first (see the instructions in the [PIBT repo](https://github.com/Kei18/pibt2)). 
 
 You’ll need both a map file and a result file:
 
@@ -112,13 +118,13 @@ cd build
 ../visualize.sh result.txt
 ```
 
+As an alternative, we also recommend mapf-visualizer. Installation and usage details can be found in the [mapf-visualizer repository](https://github.com/Kei18/mapf-visualizer).
+
 
 ## Evaluation Highlights
 
-Some of the scenarios that causes the defects are shown in `/defects`. 
+Some of the scenarios that causes the defects are shown in `/defects`. These defect cases are aligned with the cases in questionnaire in the same order.
 
-* In difficult for lacam-30s, we include a scenario that the first solution is found in 107s, which is pretty long for a 128x128 map and 100 agents and Non-Maze map. Consider that LaCAM3 in the original work was tested only up to a 30 s execution budget, and LaCAM* is announced as:
-
-> LaCAM(*) is a search-based algorithm for MAPF that can address large instances, e.g., with more than 1k agents.
+* In difficult for lacam-30s, we include a scenario that the first solution is found after 145s in parallel, which is pretty long for a 128x128 map and 100 agents and Non-Maze map. Consider that LaCAM3 in the original work was tested only up to a 30s execution budget. We observe that this behavior can be mitigated by modifying the parallel setting; see [Issue #13](https://github.com/Kei18/lacam3/issues/13) for details.
 
 * For PIBT, HCA and PIBT+, we all includes some cases that either corresponding algorithms cannot solve or exbiting an optimal gap of more than 30% among equivalent metamorphic relations. 
