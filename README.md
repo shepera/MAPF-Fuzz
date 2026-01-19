@@ -1,6 +1,6 @@
 # MAPF-Fuzz: Metamorphic Fuzzing for Multi-Agent Path Finding
 
-This repository implements **MAPF-Fuzz**, the metamorphic fuzzing framework described in “Metamorphic Fuzzing for Multi-Agent Path Finding Algorithms,” designed to systematically test the failures and performance gap of MAPF solvers.
+This is a code repository of the paper "Metamorphic Fuzzing for Multi-Agent Path Finding Algorithms" (ICSE '26). This repository implements **MAPF-Fuzz**, the metamorphic fuzzing framework designed to systematically test the failures and performance gap of MAPF solvers.
 
 ## Repository Structure
 ```
@@ -127,4 +127,12 @@ Some of the scenarios that causes the defects are shown in `/defects`. These def
 
 * In difficult for lacam-30s, we include a scenario that the first solution is found after 145s in parallel, which is pretty long for a 128x128 map and 100 agents and Non-Maze map. Consider that LaCAM3 in the original work was tested only up to a 30s execution budget. We observe that this behavior can be mitigated by modifying the parallel setting; see [Issue #13](https://github.com/Kei18/lacam3/issues/13) for details.
 
-* For PIBT, HCA and PIBT+, we all includes some cases that either corresponding algorithms cannot solve or exbiting an optimal gap of more than 30% among equivalent metamorphic relations. 
+* For PIBT, HCA and PIBT+, we all includes some cases that either corresponding algorithms cannot solve or exbiting an optimal gap of more than 30% among equivalent metamorphic relations.
+
+
+## Citation
+
+If you find this work useful for your research, please cite our ICSE 2026 paper:
+```
+Luxia Lin, Xudong Zhang, Shihao Zhu, and Yan Cai. 2026. Metamorphic Fuzzing for Multi-Agent Path Finding Algorithms. In 2026 IEEE/ACM 48th International Conference on Software Engineering (ICSE ’26), April 12–18, 2026, Rio de Janeiro, Brazil. ACM, New York, NY, USA, 13 pages. https://doi.org/10.1145/3744916.3787841
+```
